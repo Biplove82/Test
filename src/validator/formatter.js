@@ -1,17 +1,17 @@
-const str=` functionUp  `;
+const str=` FuNcTiOnUp  `;
 const trm= function trim(){
-    return (str.trim());
+    console.log(str.trim())
 }
 module.exports.trim=trm;
 
 const lower=function changetoLowerCase() {
-    return (str.toLowerCase())
+    console.log(str.toLowerCase())
 }
 
 module.exports.lower=lower;
 
 const upper=function changetoUpperCase() {
-    return (str.toUpperCase())
+    console.log(str.toUpperCase())
 }
 
 module.exports.upper=upper;
