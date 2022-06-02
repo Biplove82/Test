@@ -1,14 +1,17 @@
-const date=function printDate (){
-    console.log("Current Date : 01.06.2022")
+const printDate=function(){
+    let currentdate= new Date();
+    console.log("Current Date : " + currentdate)
 }
-module.exports.date=date;
+module.exports.date=printDate;
 
-const month=function printMonth (){
-    console.log("Current Month : June")
+const printMonth =function (){
+    let currentdate= new Date();
+    let currentmonth = currentdate.getMonth()+1;
+    console.log("Current Month : " + currentmonth)
 }
-module.exports.month=month;
+module.exports.month=printMonth;
 
-const batch=function batchInfo (){
+const batchInfo=function  (){
     console.log("Radon W3D2 ,the topic for today is Node.js module System")
 }
-module.exports.batch=batch;
+module.exports.batch=batchInfo;
