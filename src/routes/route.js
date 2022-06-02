@@ -28,8 +28,13 @@ for(let i=0;i<20;i++){
 }
 const tailed= lodash.tail(odd)
 console.log(tailed)
+
 const unioned= lodash.union([2,43,32],[4,2,54,10],[32,43,56],[12,45],[99])
-console.log(unioned)    
+console.log(unioned)
+
+const paired= lodash.fromPairs([["horror","The Shining"],["drama","Titanic"],["thriller","Shutter Island"],["fantasy","Pans Labyrinth"]])
+console.log(paired)
+
     res.send('My Hello api!')
 });
 
