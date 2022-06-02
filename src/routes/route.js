@@ -4,38 +4,48 @@ const underscore = require('underscore')
 
 const router = express.Router();
 
-router.get('/test-me', function (req, res) {
-    myHelper.printDate()
-    myHelper.getCurrentMonth()
-    myHelper.getCohortData()
-    let firstElement = underscore.first(['Sabiha','Akash','Pritesh'])
-    console.log('The first element received from underscope function is '+firstElement)
-    res.send('My first ever api!')
-});
+router.get('/movies', function (req, res) {
 
-router.get('/hello', function (req, res) {
+    const movieNames=['Batman Begins','The Dark Knight','The Dark Knight Rises','IronMan']
    
-    res.send('Hello there!')
+    res.send(movieNames)
 });
 
-router.get('/candidates', function(req, res){
-    console.log('Query paramters for this request are '+JSON.stringify(req.query))
-    let gender = req.query.gender
-    let state = req.query.state
-    let district = req.query.district
-    console.log('State is '+state)
-    console.log('Gender is '+gender)
-    console.log('District is '+district)
-    let candidates = ['Akash','Suman']
-    res.send(candidates)
-})
+router.get('/movies/:indexNumber', function (req, res) {
 
-router.get('/candidates/:canidatesName', function(req, res){
-    console.log('The request objects is '+ JSON.stringify(req.params))
-    console.log('Candidates name is '+req.params.canidatesName)
-    res.send('Done')
-})
+    if (req.params.indexNumber< movieNames.length)
+    {   
+    res.send(movieNames[req.params.indexNumber])
+    }
+    else {
+        res.send("Enter valid indexNumber")
+    }
+});
 
+router.get('/films', function (req, res) {
+
+    const filmNames=[{id:1, name:"Don"},{id:2, name:"RaOne"},{id:3, name:"Swades"},{id:4, name:"Kal Ho Naa Ho"}]
+
+   
+    res.send(filmNames)
+});
+
+router.get('/films/:filmId', function (req, res) {
+
+    const id= req.params.filmId
+    const filmNames=[{id:1, name:"Don"},{id:2, name:"RaOne"},{id:3, name:"Swades"},{id:4, name:"Kal Ho Naa Ho"}]
+    let arr=[]
+    filmNames.forEach(x => {
+        if (id == x.id){
+            arr=x;
+        }        
+     });
+     if (arr.length !== 0){
+         res.send(arr)
+     } else {
+         res.send('No movie exists with this id')
+     }
+});
 
 module.exports = router;
 // adding this comment for no reason
