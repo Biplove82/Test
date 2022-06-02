@@ -13,6 +13,7 @@ router.get('/movies', function (req, res) {
 
 router.get('/movies/:indexNumber', function (req, res) {
 
+    const movieNames=['Batman Begins','The Dark Knight','The Dark Knight Rises','IronMan']
     if (req.params.indexNumber< movieNames.length)
     {   
     res.send(movieNames[req.params.indexNumber])
