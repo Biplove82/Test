@@ -47,5 +47,33 @@ router.get('/films/:filmId', function (req, res) {
      }
 });
 
+
+router.get('/sol1', function (req, res) {
+
+    let arr=[1,2,3,4,5,6,7,8,10]
+    let sumNatural = (arr[arr.length-1]*(arr[arr.length-1]+1))/2;
+    let sumArray=0;
+    arr.forEach(x=> sumArray=sumArray+x);
+    let missingNumber= sumNatural-sumArray;
+
+    res.send("The missing number is:- "+missingNumber)
+
+    
+});
+
+
+router.get('/sol2', function (req, res) {
+
+    let arr=[33,34,36,37,38]
+    let sumNatural = ((arr.length+1)*(arr[0]+arr[arr.length-1]))/2;
+    let sumArray=0;
+    arr.forEach(x=> sumArray=sumArray+x);
+    let missingNumber= sumNatural-sumArray;
+
+    res.send("The missing number is:- "+missingNumber)
+
+    
+});
+
 module.exports = router;
 // adding this comment for no reason
