@@ -1,23 +1,52 @@
 const express = require('express');
-
 const router = express.Router();
-const logger = require('./logger')
 
-router.get('/test-me', function (req, res) {
-
-    logger.log()
-    res.send(logger.url)
-    res.send('My first ever api! and above is written in another file')
-});
-router.get('/test-me2', function (req, res) {
-    res.send('Hello')
-});
-router.get('/test-me2', function (req, res) {
-    res.send('World')
-});
-router.get('/test-me4', function (req, res) {
-    res.send('Hi')
-});
+let players =
+   [
+       {
+           "name": "manish",
+           "dob": "1/1/1995",
+           "gender": "male",
+           "city": "jalandhar",
+           "sports": [
+               "swimming"
+           ]
+       },
+       {
+           "name": "gopal",
+           "dob": "1/09/1995",
+           "gender": "male",
+           "city": "delhi",
+           "sports": [
+               "soccer"
+           ],
+       },
+       {
+           "name": "lokesh",
+           "dob": "1/1/1990",
+           "gender": "male",
+           "city": "mumbai",
+           "sports": [
+               "soccer"
+           ],
+       },
+   ]
+ 
+   router.post('/players', function (req, res) {
+ 
+       //LOGIC WILL COME HERE
+       let addPlayer= req.body
+       let count=0;
+       players.forEach(x => {
+           if(addPlayer.name == x.name){
+            count++
+           }
+       });
+       
+        if(count === 0){
+       players.push(addPlayer)
+       }
+        res.send(  { data: players , status: true }  )
+   })
 
 module.exports = router;
-// adding this comment for no reason
