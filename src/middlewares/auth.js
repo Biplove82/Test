@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const jwtvalidation = async function (req, res,next) {
+const authentication = async function (req, res,next) {
     let token = req.headers["x-Auth-token"];
     if (!token) token = req.headers["x-auth-token"];
   
@@ -18,9 +18,20 @@ const jwtvalidation = async function (req, res,next) {
     if (!decodedToken){
       return res.send({ status: false, msg: "Token is invalid" });
     }
-    let userid= req.params.userId
-    if (decodedToken.userId!==userid) return res.send({status: false,msg:"User ID or token is Wrong"})
     else {next()}
 }
+const authorization=async function (req, res,next) {
+  let token = req.headers["x-Auth-token"];
+  if (!token) token = req.headers["x-auth-token"];
+  
+  
+  let decodedToken = jwt.verify(token, "functionup-radon");
+  if (decodedToken.userId !==req.params.userId){
+    return res.send({ status: false, msg: "UserId or Token is Wrong" });
+  }
+  else {next()}
+}
 
-module.exports.jwtvalidation=jwtvalidation;
+
+module.exports.authentication=authentication;
+module.exports.authorization=authorization;
