@@ -3,7 +3,7 @@ const router = express.Router();
 const userController= require("../controllers/userController")
 const jwtMW= require("../middlewares/auth")
 
-router.post("/users", userController.createUser  )
+router.post("/users", userController.createUser)
 
 router.post("/login", userController.loginUser)
 
