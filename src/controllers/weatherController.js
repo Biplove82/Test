@@ -57,7 +57,7 @@ const getcitytemp = async function (req, res) {
       arr.push(obj);
     }
     arr.sort((a, b) => a.temperature - b.temperature);
-    es.status(200).send({ data: arr });
+    res.status(200).send({ data: arr });
   } catch (err) {
     console.log(err);
     res.status(500).send({ msg: err.message });
